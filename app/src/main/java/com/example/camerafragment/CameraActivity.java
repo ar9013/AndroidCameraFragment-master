@@ -31,20 +31,5 @@ public class CameraActivity extends Activity {
             fm.beginTransaction().add(R.id.fragment_container, fragment, CAMERA_FRAGMENT).commit();
         }
 
-        final ImageButton b = (ImageButton)findViewById(R.id.flash_button);
-        int resId = fragment.isFlashOn() ? R.drawable.light_on : R.drawable.light;
-        b.setImageResource(resId);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (fragment.isFlashOn()) {
-                    fragment.flashTurnOff();
-                } else {
-                    fragment.flashTurnOn();
-                }
-                int resId = fragment.isFlashOn() ? R.drawable.light_on : R.drawable.light;
-                b.setImageResource(resId);
-            }
-        });
     }
 }
