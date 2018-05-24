@@ -153,55 +153,7 @@ public class CameraFragment extends Fragment {
         }
     }
 
-    /**
-     * Check if camera flash is on
-     * @return true if flash is working and false otherwise
-     */
-    public boolean isFlashOn() {
-        return flashOn;
-    }
 
-    /**
-     * Turn camera flash on. Turning flash on may fail for several reasons. For example device may not have flash
-     * @return method returns true if flash was successfully turned on and returns false otherwise.
-     */
-    public boolean flashTurnOn() {
-        if (camera == null) {
-            return false;
-        }
-        Camera.Parameters p = camera.getParameters();
-        List<String> modes = p.getSupportedFlashModes();
-        if (modes == null || !modes.contains(Camera.Parameters.FLASH_MODE_TORCH)) {
-            return false;
-        }
-
-        p.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-        camera.setParameters(p);
-        flashOn = true;
-
-        return true;
-    }
-
-    /**
-     * Turn camera flash off. Turning flash off may fail for several reasons. For example device may not have flash
-     * @return method returns true if flash was successfully turned off and returns false otherwise.
-     */
-    public boolean flashTurnOff() {
-        if (camera == null) {
-            return false;
-        }
-        Camera.Parameters p = camera.getParameters();
-        List<String> modes = p.getSupportedFlashModes();
-        if (modes == null || !modes.contains(Camera.Parameters.FLASH_MODE_OFF)) {
-            return false;
-        }
-
-        p.setFlashMode(Camera.Parameters.FLASH_MODE_OFF);
-        camera.setParameters(p);
-        flashOn = false;
-
-        return true;
-    }
 
     private class SurfaceCamCallback implements SurfaceHolder.Callback, Camera.PreviewCallback {
         private Camera camera;
